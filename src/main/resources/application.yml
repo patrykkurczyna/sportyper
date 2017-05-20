@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: sportyper
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost/sportyper?useTimezone=true&serverTimezone=UTC
+    username: sportyper
+    password: sportyper2017
+    validation-query: SELECT 1
+    test-on-borrow: true
+    test-on-return: true
+
+server:
+  port: 8080
+
+management:
+  port: 8081
