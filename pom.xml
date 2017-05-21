@@ -14,7 +14,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.0.M1</version>
+		<version>1.5.2.RELEASE</version>
 	</parent>
 
 	<properties>
@@ -30,7 +30,25 @@
 		</dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-undertow</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security.extensions</groupId>
+            <artifactId>spring-security-saml-dsl</artifactId>
+            <version>1.0.0.M3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -61,13 +79,31 @@
 		</dependency>
 	</dependencies>
 
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/libs-milestone</url>
+        </repository>
+    </repositories>
+
 	<build>
 		<finalName>${project.artifactId}</finalName>
 		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
-			</resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>**/*.jks</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <include>**/*.jks</include>
+                </includes>
+            </resource>
 		</resources>
 		<plugins>
 			<plugin>
