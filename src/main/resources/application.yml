@@ -3,7 +3,7 @@ spring:
     name: sportyper
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost/sportyper?useTimezone=true&serverTimezone=UTC
+    url: jdbc:mysql://localhost/sportyper?useTimezone=true&serverTimezone=UTC&useSSL=false
     username: sportyper
     password: sportyper2017
     validation-query: SELECT 1

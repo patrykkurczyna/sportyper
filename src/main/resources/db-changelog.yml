@@ -1,0 +1,104 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: patrykkurczyna
+      changes:
+        - createTable:
+            tableName: sportyper_match_results
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: home_ht_score
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: away_ht_score
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: home_ft_score
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: away_ft_score
+                  type: bigint
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 2
+      author: patrykkurczyna
+      changes:
+        - createTable:
+            tableName: sportyper_matches
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: start_time
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: home_team
+                  type: varchar(40)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: away_team
+                  type: varchar(40)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: venue
+                  type: varchar(80)
+              - column:
+                  name: result_id
+                  type: bigint
+                  constraints:
+                    references: sportyper_match_results(id)
+                    foreignKeyName: fk_sportyper_matches_results_id
+                    nullable: true
+  - changeSet:
+      id: 3
+      author: patrykkurczyna
+      changes:
+        - createTable:
+            tableName: sportyper_goals
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: scorer
+                  type: varchar(80)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: minute
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: result_id
+                  type: bigint
+                  constraints:
+                    references: sportyper_match_results(id)
+                    foreignKeyName: fk_sportyper_match_results_goals_id

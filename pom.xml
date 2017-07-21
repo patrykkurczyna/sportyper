@@ -14,7 +14,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.0.M1</version>
+		<version>1.5.2.RELEASE</version>
 	</parent>
 
 	<properties>
@@ -32,6 +32,25 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-undertow</artifactId>
         </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-java8</artifactId>
+            <version>5.1.0.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>3.5.3</version>
+        </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -41,6 +60,7 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
+            <version>1.16.16</version>
 		</dependency>
 
 		<!--TEST-->
@@ -121,7 +141,7 @@
 					<dependency>
 						<groupId>org.projectlombok</groupId>
 						<artifactId>lombok</artifactId>
-						<version>1.16.12</version>
+						<version>1.16.16</version>
 					</dependency>
 				</dependencies>
 			</plugin>
@@ -161,5 +181,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
