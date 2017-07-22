@@ -1,6 +1,5 @@
 package pl.kurczyna.sportyper.db;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,8 +12,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.kurczyna.sportyper.dto.Goal;
 
@@ -22,12 +23,13 @@ import pl.kurczyna.sportyper.dto.Goal;
 @Builder
 @Data
 @Table(name = "sportyper_goals")
+@NoArgsConstructor
+@AllArgsConstructor
 public class GoalEntity {
 
     @Id
     @GeneratedValue
     @JsonIgnore
-    @Column(name = "goal_id")
     private Long id;
 
     @Min(1)

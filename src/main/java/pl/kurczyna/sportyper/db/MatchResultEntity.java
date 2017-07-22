@@ -33,7 +33,6 @@ public class MatchResultEntity {
     @Id
     @GeneratedValue
     @JsonIgnore
-    @Column(name = "result_id")
     private Long id;
 
     @Min(0)

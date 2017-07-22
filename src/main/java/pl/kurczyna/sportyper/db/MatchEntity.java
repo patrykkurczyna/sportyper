@@ -12,15 +12,20 @@ import javax.validation.constraints.Size;
 
 import java.time.LocalDateTime;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.kurczyna.sportyper.dto.Match;
+import pl.kurczyna.sportyper.dto.MatchInput;
 
 @Entity
 @Builder
 @Data
 @Table(name = "sportyper_matches")
+@NoArgsConstructor
+@AllArgsConstructor
 public class MatchEntity {
 
     @Id
@@ -28,7 +33,6 @@ public class MatchEntity {
     private Long id;
 
     @NotNull
-//    @Convert(converter = Jsr310JpaConverters.LocalDateTimeConverter.class)
     private LocalDateTime startTime;
 
     @Size(max = 40)
@@ -45,7 +49,7 @@ public class MatchEntity {
     @Setter
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "result_id")
-    private MatchResultEntity result;
+    private MatchResultEntity result = null;
 
     public Match toDto() {
         return Match.builder()
@@ -54,7 +58,16 @@ public class MatchEntity {
                 .awayTeam(awayTeam)
                 .startTime(startTime)
                 .venue(venue)
-                .result(result.toDto())
+                .result(result == null ? null : result.toDto())
+                .build();
+    }
+
+    public static MatchEntity of(MatchInput match) {
+        return MatchEntity.builder()
+                .homeTeam(match.getHomeTeam())
+                .awayTeam(match.getAwayTeam())
+                .startTime(match.getStartTime())
+                .venue(match.getVenue())
                 .build();
     }
 }
