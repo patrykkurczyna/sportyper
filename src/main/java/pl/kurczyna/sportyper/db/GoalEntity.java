@@ -1,5 +1,6 @@
 package pl.kurczyna.sportyper.db;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,12 +18,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import pl.kurczyna.sportyper.dto.Goal;
 
 @Entity
 @Builder
 @Data
 @Table(name = "sportyper_goals")
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class GoalEntity {
@@ -42,7 +45,7 @@ public class GoalEntity {
     private String scorer;
 
     @Setter
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "result_id")
     @JsonIgnore
     private MatchResultEntity result;

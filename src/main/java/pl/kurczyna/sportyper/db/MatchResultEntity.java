@@ -20,6 +20,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import pl.kurczyna.sportyper.dto.MatchResult;
 
 @Entity
@@ -27,6 +28,7 @@ import pl.kurczyna.sportyper.dto.MatchResult;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Table(name = "sportyper_match_results")
 public class MatchResultEntity {
 
@@ -38,22 +40,22 @@ public class MatchResultEntity {
     @Min(0)
     @NotNull
     @Column(name = "home_ht_score")
-    private int homeHTScore;
+    private Integer homeHTScore;
 
     @Min(0)
     @NotNull
     @Column(name = "away_ht_score")
-    private int awayHTScore;
+    private Integer awayHTScore;
 
     @Min(0)
     @NotNull
     @Column(name = "home_ft_score")
-    private int homeFTScore;
+    private Integer homeFTScore;
 
     @Min(0)
     @NotNull
     @Column(name = "away_ft_score")
-    private int awayFTScore;
+    private Integer awayFTScore;
 
     @OneToMany(mappedBy = "result", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default

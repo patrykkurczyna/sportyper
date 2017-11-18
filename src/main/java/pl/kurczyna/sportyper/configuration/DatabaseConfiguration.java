@@ -38,7 +38,7 @@ public class DatabaseConfiguration {
 
             @Override
             public void afterPropertiesSet() throws LiquibaseException {
-                // empty
+                // do nothing
             }
         };
     }

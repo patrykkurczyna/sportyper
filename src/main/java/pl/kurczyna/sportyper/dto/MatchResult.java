@@ -8,9 +8,9 @@ import lombok.Data;
 @Data
 @Builder
 public class MatchResult {
-    private int homeHTScore;
-    private int awayHTScore;
-    private int homeFTScore;
-    private int awayFTScore;
+    private Integer homeHTScore;
+    private Integer awayHTScore;
+    private Integer homeFTScore;
+    private Integer awayFTScore;
     private List<Goal> goals;
 }

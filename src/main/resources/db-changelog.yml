@@ -102,3 +102,73 @@ databaseChangeLog:
                   constraints:
                     references: sportyper_match_results(id)
                     foreignKeyName: fk_sportyper_match_results_goals_id
+  - changeSet:
+      id: 4
+      author: patrykkurczyna
+      changes:
+        - createTable:
+            tableName: sportyper_players
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(40)
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: sportyper_picks
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: home_ht_score
+                  type: bigint
+              - column:
+                  name: away_ht_score
+                  type: bigint
+              - column:
+                  name: home_ft_score
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: away_ft_score
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: to_score
+                  type: varchar(80)
+              - column:
+                  name: first_to_score
+                  type: varchar(80)
+              - column:
+                  name: match_id
+                  type: bigint
+                  constraints:
+                    references: sportyper_matches(id)
+                    foreignKeyName: fk_sportyper_matches_picks_id
+              - column:
+                  name: player_id
+                  type: bigint
+                  constraints:
+                    references: sportyper_players(id)
+                    foreignKeyName: fk_sportyper_players_picks_id
+  - changeset:
+      id: 5
+      author: patrykkurczyna
+      changes:
+        - addUniqueConstraint:
+            columnNames: name
+            tableName: sportyper_players
